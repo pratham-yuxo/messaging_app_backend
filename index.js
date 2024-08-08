@@ -125,8 +125,11 @@ const io = new SocketIOServer(server, {
 connect(); // connecting MongoDB
 const port = 5000;
 
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: "http://localhost:3000", // Allow requests from this origin
+  methods: ["GET", "POST"], // Allow these methods
+  credentials: true, // Allow credentials
+}));app.use(express.json());
 app.use("/api", router);
 
 server.listen(port, () => {
