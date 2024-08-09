@@ -8,13 +8,15 @@ import cors from "cors";
 import router from "./routes/forUser.js";
 import { config } from 'dotenv';
 config(); 
-const frontend_url=process.env.FRONTEND_URL || "http://localhost:3000";
+const frontend_url1=process.env.FRONTEND_URL1 || "http://localhost:3000";
+const frontend_url2=process.env.FRONTEND_URL2 || "http://localhost:3000";
+const allowedOrigins = [frontend_url1, frontend_url2, "http://localhost:3000"];
 const app = express();
 const server = http.createServer(app); // Create an HTTP server using Express app
 // const io = new SocketIOServer(server); // Attach Socket.IO to the HTTP server
 const io = new SocketIOServer(server, {
   cors: {
-    origin: [""], // Allow requests from this origin
+    origin: allowedOrigins, // Allow requests from this origin
     methods: ["GET", "POST"], // Allow these methods
     credentials: true, // Allow credentials
   },
@@ -23,7 +25,7 @@ connect(); // connecting MongoDB
 const port = 5000;
 
 app.use(cors({
-  origin: `${frontend_url}`, // Allow requests from this origin
+  origin: `${frontend_url1}, ${frontend_url2}`, // Allow requests from this origin
   methods: ["GET", "POST"], // Allow these methods
   credentials: true, // Allow credentials
 }));app.use(express.json());
