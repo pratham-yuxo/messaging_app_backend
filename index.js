@@ -25,7 +25,7 @@ connect(); // connecting MongoDB
 const port = 5000;
 
 app.use(cors({
-  origin: `${frontend_url1}, ${frontend_url2}`, // Allow requests from this origin
+  origin: allowedOrigins, // Allow requests from this origin
   methods: ["GET", "POST"], // Allow these methods
   credentials: true, // Allow credentials
 }));app.use(express.json());
