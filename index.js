@@ -11,7 +11,7 @@ config();
 const frontend_url1=process.env.FRONTEND_URL1;
 const frontend_url2=process.env.FRONTEND_URL2;
 const allowedOrigins = [frontend_url1, frontend_url2, "http://localhost:3000"];
-console.log(allowedOrigins)
+// console.log(allowedOrigins)
 const app = express();
 const server = http.createServer(app); // Create an HTTP server using Express app
 // const io = new SocketIOServer(server); // Attach Socket.IO to the HTTP server
@@ -65,6 +65,11 @@ io.on("connection", (socket) => {
     const user = getUser(data.receiverId);
     user && io.to(user.socketId).emit("getMessage", data);
   });
+  socket.on("callEnded",(id)=>{
+    const user= getUser(id);
+
+    user && io.to(user.socketId).emit("disconnected");
+  })
  
    // Listen for an event to get an email by socket ID
   socket.on('getEmail', (socketId, callback) => {

@@ -1,7 +1,7 @@
 import grid from 'gridfs-stream'
 import mongoose from 'mongoose';
 ///read the original documentry for more information
-const url = "http://localhost:5000";
+const url = process.env.FRONTEND_URL2;
 
 let gfs, gridFsBucket;
 
