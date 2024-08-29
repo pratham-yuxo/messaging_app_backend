@@ -27,7 +27,7 @@ const port = 5000;
 
 app.use(cors({
   origin: allowedOrigins, // Allow requests from this origin
-  methods: ["GET", "POST"], // Allow these methods
+  methods: ["GET", "POST","PUT"], // Allow these methods
   credentials: true, // Allow credentials
 }));
 app.use(express.json());
