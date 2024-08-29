@@ -1,7 +1,7 @@
 import grid from 'gridfs-stream'
 import mongoose from 'mongoose';
 ///read the original documentry for more information
-const url = process.env.BACKEND_HTTP_URL1 || "https://messaging-app-backend-q7j6.onrender.com";
+const url = process.env.BACKEND_HTTP_URL || "https://messaging-app-backend-q7j6.onrender.com";
 
 let gfs, gridFsBucket;
 
